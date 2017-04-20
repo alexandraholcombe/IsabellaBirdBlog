@@ -18,7 +18,7 @@ namespace IsabellaBirdBlog.Controllers
             var allPeople = db.Persons
                 .Include(person => person.Location)
                 .ToList();
-            return View(db.Persons.ToList());
+            return View(allPeople);
         }
     }
 }
