@@ -1,0 +1,15 @@
+﻿@model IsabellaBirdBlog.Models.Experience
+
+@{
+    ViewData["Title"] = "Isabella Bird Blog - Delete Experience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Are you sure you want to delete this experience?</h2>
+<hr />
+@Html.DisplayFor(model => model.ExperienceName)
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+@Html.ActionLink("Back to List", "Index")
