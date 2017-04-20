@@ -22,7 +22,10 @@ namespace IsabellaBirdBlog.Controllers
 
         public IActionResult Details(int id)
         {
-            var thisExperience = db.Experiences.FirstOrDefault(experiences => experiences.ExperienceId == id);
+            var thisExperience = db.Experiences
+                .Include(experiences => experiences.Location)
+                .FirstOrDefault(experiences => experiences.ExperienceId == id);
+
             ViewBag.People = db.Experiences
                 .Include(experience => experience.PersonsExperiences)
                 .ThenInclude(personsExperiences => personsExperiences.Person)
@@ -40,6 +43,25 @@ namespace IsabellaBirdBlog.Controllers
         public IActionResult Create(Experience experience)
         {
             db.Experiences.Add(experience);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var thisExperience = db.Experiences
+                .Include(experiences => experiences.Location)
+                .FirstOrDefault(experiences => experiences.ExperienceId == id);
+
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName", "GeoClass");
+
+            return View(thisExperience);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Experience experience)
+        {
+            db.Entry(experience).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

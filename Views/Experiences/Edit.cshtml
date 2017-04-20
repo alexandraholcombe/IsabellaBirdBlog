@@ -1,0 +1,34 @@
+﻿@model IsabellaBirdBlog.Models.Experience
+@{
+    ViewData["Title"] = "Isabella Bird Blog - Edit Experience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<hr />
+<h4>Edit this experience: @Html.DisplayFor(model => model.ExperienceName)</h4>
+
+@using (Html.BeginForm())
+{
+
+    @Html.HiddenFor(model => model.ExperienceId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ExperienceDesc)
+        @Html.EditorFor(model => model.ExperienceDesc)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ExperienceName)
+        @Html.EditorFor(model => model.ExperienceName)
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayFor(model => model.LocationId);
+        @Html.LabelFor(model => model.LocationId)
+        @Html.DropDownList("LocationId")
+    </div>
+
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+}
+<p>@Html.ActionLink("Back to list", "Index")</p>
