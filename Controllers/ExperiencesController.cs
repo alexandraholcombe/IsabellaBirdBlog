@@ -7,8 +7,6 @@ using IsabellaBirdBlog.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace IsabellaBirdBlog.Controllers
 {
     public class ExperiencesController : Controller

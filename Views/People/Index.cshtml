@@ -1,0 +1,30 @@
+﻿@model IEnumerable<IsabellaBirdBlog.Models.Person>
+
+@{
+    ViewData["Title"] = "Isabella Bird Blog - People";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>People</h2>
+
+<table class="table">
+
+    @foreach (var listPerson in Model)
+    {
+        <tr>
+            <td>
+                @listPerson.PersonName
+            </td>
+            <td>
+                @listPerson.Location.LocationName
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = listPerson.PersonId }) |
+                @Html.ActionLink("Edit", "Edit", new { id = listPerson.PersonId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = listPerson.PersonId })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Add new Location", "Create")
