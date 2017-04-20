@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IsabellaBirdBlog.Models.Experience>
+
+@{
+    ViewData["Title"] = "Isabella Bird Blog - Experiences";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Experiences</h2>
+
+<table class="table">
+
+    @foreach (var listExperience in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink((string) @listExperience.ExperienceName, "Details", new { id = listExperience.ExperienceId })
+                
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = listExperience.ExperienceId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = listExperience.ExperienceId })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Add new Experience", "Create")

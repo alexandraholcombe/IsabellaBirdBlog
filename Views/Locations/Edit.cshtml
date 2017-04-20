@@ -1,0 +1,26 @@
+﻿@model IsabellaBirdBlog.Models.Location
+@{
+    ViewData["Title"] = "Isabella Bird Blog - Edit Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<hr />
+<h4>Edit this location: @Html.DisplayFor(model => model.LocationName)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.LocationId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LocationName)
+        @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.DropDownList("GeoClass", (IEnumerable<SelectListItem>)ViewBag.Geoclasses, new { @class = "form-control" })
+    </div>
+
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+}
+<p>@Html.ActionLink("Back to list", "Index")</p>

@@ -1,0 +1,30 @@
+﻿@model IsabellaBirdBlog.Models.Location
+
+@{
+    ViewData["Title"] = "Location - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<hr />
+    Location Name: @Html.DisplayFor(model => model.LocationName)
+
+    <p>@Html.DisplayFor(model => model.GeoClass)</p>
+
+
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+
+    <h4>Experiences:</h4>
+    <table class="table">
+        @foreach (var locationExperience in ViewBag.Experiences)
+        {
+            <tr>
+                <td>
+                    @locationExperience.ExperienceName
+                </td>
+                <td>
+                    @Html.ActionLink((string) @locationExperience.ExperienceName, "Details", "Experiences", new { id = locationExperience.ExperienceId })
+                </td>
+            </tr>
+        }
+    </table>

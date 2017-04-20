@@ -1,0 +1,27 @@
+﻿@model IsabellaBirdBlog.Models.Experience
+
+<html>
+<head>
+    <title>Experience - Create</title>
+</head>
+<body>
+    <h2>Write about a new experience</h2>
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(model => model.ExperienceDesc)
+        @Html.EditorFor(model => model.ExperienceDesc)
+
+        @Html.LabelFor(model => model.ExperienceName)
+        @Html.EditorFor(model => model.ExperienceName)
+
+        @Html.LabelFor(model => model.LocationId)
+        @Html.DropDownList("LocationId")
+
+        <input type="submit" value="Create" class="btn btn-default" />
+    }
+
+    @Html.ActionLink("Back to Teams", "Index")
+</body>
+</html>
